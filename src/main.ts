@@ -4,11 +4,10 @@ import { AppModule } from './app.module';
 import { config } from './config/env';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-import { paginateResponse } from './config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const PORT = config.PORT || 5005;
+  const PORT = config.PORT || 5002;
 
   const NOTIFICATION_SERVICE_EVENT =
     await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
@@ -50,14 +49,14 @@ async function bootstrap() {
   //apply validation pipe
   app.useGlobalPipes(new ValidationPipe());
 
-  //apply pagination global middleware
-  app.use(paginateResponse);
-
   // Server Listening on port
   await app.listen(PORT);
   await NOTIFICATION_SERVICE_EVENT.listen();
   console.log(
-    'mPharma Notification-Service listening to http://localhost:' + PORT,
+    'mPharma Notification Service on PORT:' +
+      PORT +
+      ' accessible on: http://localhost:' +
+      PORT,
   );
 }
 bootstrap();
