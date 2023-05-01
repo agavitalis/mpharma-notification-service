@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { EmailService } from 'src/email/email.service';
+const ADMIN_EMAIL = 'agavitalisogbonna@gmail.com';
 
 @Injectable()
 export class DiagnosisService {
@@ -7,12 +8,11 @@ export class DiagnosisService {
 
   async handleDiagnosisUploadedEvent(payloadData: Record<string, unknown>) {
     try {
-      // Send Email to the user
-      await this.mailService.sendWelcomeEmail(`${payloadData.email}`, {
-        firstName: payloadData.firstName,
-        lastName: payloadData.lastName,
+      // Send Email to the admin
+      await this.mailService.sendDiagnosisUploadStatusEmail(`${ADMIN_EMAIL}`, {
+        status: payloadData,
       });
-      console.log(`Mail sent to: ${JSON.stringify(payloadData.email)}`);
+      console.log(`Mail sent to: ${ADMIN_EMAIL})}`);
     } catch (error) {
       console.log(`Error occurred while sending email: \n${error}`);
     }

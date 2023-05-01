@@ -16,6 +16,12 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "noFallthroughCasesInSwitch": false,
+    "strict": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src/**/*.ts", /* Include every ts file in source folder */
+    "src/**/*.hbs" /* Include every hbs file in source folder */
+  ],
 }

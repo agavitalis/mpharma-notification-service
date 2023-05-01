@@ -6,12 +6,15 @@ import { config } from '../config/env';
 export class EmailService {
   constructor(private mailerService: MailerService) {}
 
-  async sendWelcomeEmail(email: string, context: Record<string, unknown>) {
+  async sendDiagnosisUploadStatusEmail(
+    email: string,
+    context: Record<string, unknown>,
+  ) {
     await this.mailerService.sendMail({
       to: email,
       from: config.MAIL_FROM,
-      subject: `Hi, You're Welcome to Ibx`,
-      template: 'user/user-created',
+      subject: `Hi, mPharam Log Upload Status`,
+      template: 'diagnosis/diagnosis-upload-status',
       context,
     });
   }

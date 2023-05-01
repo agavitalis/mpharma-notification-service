@@ -23,7 +23,9 @@ export class DiagnosisController {
     const channel = context.getChannelRef();
     const originalMsg = context.getMessage();
     await this.diagnosisService.handleDiagnosisUploadedEvent(payloadData);
-    console.log(`[DIAGNOSIS UPLOADED]: just registered 🎉`);
+    console.log(
+      `[DIAGNOSIS UPLOADED]: just registered 🎉 with status: ${payloadData}`,
+    );
     channel.ack(originalMsg);
   }
 }
