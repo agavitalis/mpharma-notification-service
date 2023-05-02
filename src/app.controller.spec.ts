@@ -15,8 +15,10 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return "Hello from mPharma!"', () => {
+      expect(appController.getHello()).toBe(
+        '<h1 style="text-align:center"> Hello, from mPharma Notification-Service! </h1>',
+      );
     });
   });
 });
