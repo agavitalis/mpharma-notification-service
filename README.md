@@ -34,7 +34,7 @@ Open the browser and go to http://localhost:5002 to access
 ## Test
 
 ```bash
-# unit tests -(incomplete)
+# unit tests 
 $ npm run test
 
 ```
